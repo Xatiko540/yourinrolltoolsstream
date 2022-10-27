@@ -1,5 +1,5 @@
 name: yourinrolltoolsstream_example
-description: Demonstrates how to use the yourinrolltoolsstream plugin Social Network Community Youinroll Flutter..
+description: Camera control on Android and iOS. record video, take pictures, and also support rtmp streaming. Based on the camera plugin for the Youinroll Flutter social network community.
 
 publish_to: 'none'
 
