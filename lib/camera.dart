@@ -277,32 +277,31 @@ class CameraValue {
   bool get hasError => errorDescription != null;
 
   CameraValue copyWith({
-     bool? isInitialized,
-     bool? isRecordingVideo,
-     bool? isStreamingVideoRtmp,
-     bool? isTakingPicture,
-     bool? isStreamingImages,
-     String? errorDescription,
+    bool? isInitialized,
+    bool? isRecordingVideo,
+    bool? isStreamingVideoRtmp,
+    bool? isTakingPicture,
+    bool? isStreamingImages,
+    String? errorDescription,
     Size? previewSize,
     int? previewQuarterTurns,
-     bool? isRecordingPaused,
-     bool? isStreamingPaused,
+    bool? isRecordingPaused,
+    bool? isStreamingPaused,
     dynamic event,
-  }) {
-    return CameraValue(
-      isInitialized: isInitialized ?? false,
-      errorDescription: errorDescription,
-      previewSize: previewSize,
-      previewQuarterTurns: previewQuarterTurns,
-      isRecordingVideo: isRecordingVideo ?? false,
-      isStreamingVideoRtmp: isStreamingVideoRtmp ?? false,
-      isTakingPicture: isTakingPicture ?? false,
-      isStreamingImages: isStreamingImages ?? false,
-      isRecordingPaused: isRecordingPaused ?? false,
-      isStreamingPaused: isStreamingPaused ?? false,
-      event: event,
-    );
-  }
+  }) =>
+      CameraValue(
+        isInitialized: isInitialized ?? this.isInitialized,
+        errorDescription: errorDescription ?? this.errorDescription,
+        previewSize: previewSize ?? this.previewSize,
+        previewQuarterTurns: previewQuarterTurns ?? this.previewQuarterTurns,
+        isRecordingVideo: isRecordingVideo ?? this.isRecordingVideo,
+        isStreamingVideoRtmp: isStreamingVideoRtmp ?? this.isStreamingVideoRtmp,
+        isTakingPicture: isTakingPicture ?? this.isTakingPicture,
+        isStreamingImages: isStreamingImages ?? this.isStreamingImages,
+        isRecordingPaused: isRecordingPaused ?? this.isRecordingVideo,
+        isStreamingPaused: isStreamingPaused ?? this.isStreamingPaused,
+        event: event ?? this.event,
+      );
 
   @override
   String toString() {
