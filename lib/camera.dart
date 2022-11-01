@@ -84,7 +84,7 @@ Future<List<CameraDescription>> availableCameras() async {
       return CameraDescription(
         name: camera?['name'],
         lensDirection: _parseCameraLensDirection(camera?['lensFacing']),
-        sensorOrientation: camera?['sensorOrientation'],
+        sensorOrientation: 0,
       );
     }).toList();
   } on PlatformException catch (e) {
