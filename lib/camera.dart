@@ -13,7 +13,7 @@ import 'package:flutter/widgets.dart';
 part 'camera_image.dart';
 
 final MethodChannel _channel =
-    const MethodChannel('plugins.flutter.io/yourinrolltoolsstream');
+const MethodChannel('plugins.flutter.io/yourinrolltoolsstream');
 
 enum CameraLensDirection { front, back, external }
 
@@ -84,7 +84,7 @@ Future<List<CameraDescription>> availableCameras() async {
       return CameraDescription(
         name: camera?['name'],
         lensDirection: _parseCameraLensDirection(camera?['lensFacing']),
-        sensorOrientation: camera?['sensorOrientation'],
+        sensorOrientation: 0,
       );
     }).toList();
   } on PlatformException catch (e) {
@@ -219,16 +219,16 @@ class CameraValue {
 
   const CameraValue.uninitialized()
       : this(
-          isInitialized: false,
-          isRecordingVideo: false,
-          isTakingPicture: false,
-          isStreamingImages: false,
-          isStreamingVideoRtmp: false,
-          isRecordingPaused: false,
-          isStreamingPaused: false,
-          previewQuarterTurns: 0,
-          event: null,
-        );
+    isInitialized: false,
+    isRecordingVideo: false,
+    isTakingPicture: false,
+    isStreamingImages: false,
+    isStreamingVideoRtmp: false,
+    isRecordingPaused: false,
+    isStreamingPaused: false,
+    previewQuarterTurns: 0,
+    event: null,
+  );
 
   /// True after [CameraController.initialize] has completed successfully.
   final bool? isInitialized;
@@ -277,32 +277,31 @@ class CameraValue {
   bool get hasError => errorDescription != null;
 
   CameraValue copyWith({
-     bool? isInitialized,
-     bool? isRecordingVideo,
-     bool? isStreamingVideoRtmp,
-     bool? isTakingPicture,
-     bool? isStreamingImages,
-     String? errorDescription,
+    bool? isInitialized,
+    bool? isRecordingVideo,
+    bool? isStreamingVideoRtmp,
+    bool? isTakingPicture,
+    bool? isStreamingImages,
+    String? errorDescription,
     Size? previewSize,
     int? previewQuarterTurns,
-     bool? isRecordingPaused,
-     bool? isStreamingPaused,
+    bool? isRecordingPaused,
+    bool? isStreamingPaused,
     dynamic event,
-  }) {
-    return CameraValue(
-      isInitialized: isInitialized ?? false,
-      errorDescription: errorDescription,
-      previewSize: previewSize,
-      previewQuarterTurns: previewQuarterTurns,
-      isRecordingVideo: isRecordingVideo ?? false,
-      isStreamingVideoRtmp: isStreamingVideoRtmp ?? false,
-      isTakingPicture: isTakingPicture ?? false,
-      isStreamingImages: isStreamingImages ?? false,
-      isRecordingPaused: isRecordingPaused ?? false,
-      isStreamingPaused: isStreamingPaused ?? false,
-      event: event,
-    );
-  }
+  }) =>
+      CameraValue(
+        isInitialized: isInitialized ?? this.isInitialized,
+        errorDescription: errorDescription ?? this.errorDescription,
+        previewSize: previewSize ?? this.previewSize,
+        previewQuarterTurns: previewQuarterTurns ?? this.previewQuarterTurns,
+        isRecordingVideo: isRecordingVideo ?? this.isRecordingVideo,
+        isStreamingVideoRtmp: isStreamingVideoRtmp ?? this.isStreamingVideoRtmp,
+        isTakingPicture: isTakingPicture ?? this.isTakingPicture,
+        isStreamingImages: isStreamingImages ?? this.isStreamingImages,
+        isRecordingPaused: isRecordingPaused ?? this.isRecordingVideo,
+        isStreamingPaused: isStreamingPaused ?? this.isStreamingPaused,
+        event: event ?? this.event,
+      );
 
   @override
   String toString() {
@@ -327,12 +326,12 @@ class CameraValue {
 /// To show the camera preview on the screen use a [CameraPreview] widget.
 class CameraController extends ValueNotifier<CameraValue> {
   CameraController(
-    this.description,
-    this.resolutionPreset, {
-    this.enableAudio = true,
-    this.streamingPreset,
-    this.androidUseOpenGL = false,
-  }) : super(CameraValue.uninitialized());
+      this.description,
+      this.resolutionPreset, {
+        this.enableAudio = true,
+        this.streamingPreset,
+        this.androidUseOpenGL = false,
+      }) : super(CameraValue.uninitialized());
 
   final CameraDescription description;
   final ResolutionPreset resolutionPreset;
@@ -359,13 +358,13 @@ class CameraController extends ValueNotifier<CameraValue> {
     try {
       _creatingCompleter = Completer<void>();
       final Map<String, dynamic>? reply =
-          await _channel.invokeMapMethod<String, dynamic>(
+      await _channel.invokeMapMethod<String, dynamic>(
         'initialize',
         <String, dynamic>{
           'cameraName': description.name,
           'resolutionPreset': serializeResolutionPreset(resolutionPreset),
           'streamingPreset':
-              serializeResolutionPreset(streamingPreset ?? resolutionPreset),
+          serializeResolutionPreset(streamingPreset ?? resolutionPreset),
           'enableAudio': enableAudio,
           'enableAndroidOpenGL': androidUseOpenGL ?? false
         },
@@ -383,7 +382,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       throw CameraException(e.code, e.message!);
     }
     _eventSubscription = EventChannel(
-            'plugins.flutter.io/yourinrolltoolsstream/cameraEvents$_textureId')
+        'plugins.flutter.io/yourinrolltoolsstream/cameraEvents$_textureId')
         .receiveBroadcastStream()
         .listen(_listener);
     _creatingCompleter?.complete();
@@ -548,13 +547,13 @@ class CameraController extends ValueNotifier<CameraValue> {
       throw CameraException(e.code, e.message!);
     }
     const EventChannel cameraEventChannel =
-        EventChannel('plugins.flutter.io/yourinrolltoolsstream/imageStream');
+    EventChannel('plugins.flutter.io/yourinrolltoolsstream/imageStream');
     _imageStreamSubscription =
         cameraEventChannel.receiveBroadcastStream().listen(
-      (dynamic imageData) {
-        onAvailable(CameraImage._fromPlatformData(imageData));
-      },
-    );
+              (dynamic imageData) {
+            onAvailable(CameraImage._fromPlatformData(imageData));
+          },
+        );
   }
 
   /// Stop streaming images from platform camera.

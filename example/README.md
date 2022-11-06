@@ -1,4 +1,4 @@
-# yourinrolltoolsstream_example
+# yourinrolltoolsstream_example version: 1.1.1
 
 Demonstrates how to use the yourinrolltoolsstream plugin.
 
