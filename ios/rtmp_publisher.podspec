@@ -3,7 +3,7 @@
 # Run `pod lib lint rtmp_publisher.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'rtmp_publisher'
+  s.name             = 'yourinrolltoolsstream'
   s.version          = '0.0.1'
   s.summary          = 'FLutter plugin to allow rtmp to work with ios.'
   s.description      = <<-DESC
