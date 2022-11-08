@@ -39,7 +39,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.app.rtmp_publisher_example"
+        applicationId "com.app.yourinrolltoolsstream_example"
         minSdkVersion 25
         targetSdkVersion 32
         versionCode 2
@@ -66,4 +66,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation project(path: ':theClassPathGoesHere')
 }

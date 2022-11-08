@@ -8,13 +8,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  args:
-    dependency: transitive
-    description:
-      name: args
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.3.1"
   async:
     dependency: transitive
     description:
@@ -138,13 +131,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
-  logger:
-    dependency: transitive
-    description:
-      name: logger
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   matcher:
     dependency: transitive
     description:
@@ -250,13 +236,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-  rename:
-    dependency: "direct main"
-    description:
-      name: rename
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

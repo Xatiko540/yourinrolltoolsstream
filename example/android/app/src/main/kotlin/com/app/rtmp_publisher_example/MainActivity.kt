@@ -1,4 +1,4 @@
-package com.app.rtmp_publisher_example
+package com.app.yourinrolltoolsstream_example
 
 import io.flutter.embedding.android.FlutterActivity
 

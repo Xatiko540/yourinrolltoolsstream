@@ -56,9 +56,9 @@ class CameraInfo implements CameraDescriptionNew {
   LensDirection? get direction {
     switch (facing!) {
       case Facing.front:
-        return LensDirection?.front;
+        return LensDirection.front;
       case Facing.back:
-        return LensDirection?.back;
+        return LensDirection.back;
     }
 
     return null;
