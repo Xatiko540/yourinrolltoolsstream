@@ -1,6 +1,6 @@
 name: yourinrolltoolsstream
 description: Camera control on Android and iOS. record video, take pictures, and also support rtmp streaming. Based on the camera plugin for the Youinroll Flutter social network community.
-version: 1.1.5
+version: 1.1.6
 homepage: https://github.com/Xatiko540/yourinrolltoolsstream
 
 environment:
