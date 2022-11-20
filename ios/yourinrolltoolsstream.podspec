@@ -4,8 +4,8 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'yourinrolltoolsstream'
-  s.version          = '1.0.0'
-  s.summary          = 'FLutter plugin to allow rtmp yourinrolltoolsstream to work with ios.'
+  s.version          = '0.0.1'
+  s.summary          = 'FLutter plugin to allow rtmp to work with ios.'
   s.description      = <<-DESC
 A new flutter plugin project.
                        DESC

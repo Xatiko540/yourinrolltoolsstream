@@ -61,6 +61,5 @@ class CameraInfo implements CameraDescriptionNew {
         return LensDirection.back;
     }
 
-    return null;
   }
 }

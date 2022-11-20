@@ -34,9 +34,12 @@ android {
         main.java.srcDirs += '../yasea/library/src'
     }
 
+    lintOptions {
+        disable 'InvalidPackage'
+    }
 
     defaultConfig {
-        applicationId "com.app.yourinrolltoolsstream_example"
+        applicationId "com.app.rtmp_publisher_example"
         minSdkVersion 25
         targetSdkVersion 32
         versionCode 2
@@ -51,16 +54,10 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    packagingOptions {
-        resources {
-            excludes += ['project.clj']
-        }
-    }
-    lint {
-        disable 'InvalidPackage'
-    }
 
-    namespace 'com.app.yourinrolltoolsstream_example'
+    packagingOptions {
+        exclude 'project.clj'
+    }
 }
 
 flutter {
@@ -69,5 +66,4 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
 }
